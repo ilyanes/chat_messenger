@@ -1,0 +1,37 @@
+[
+  {
+    "avatar": "https://cdn-icons-png.flaticon.com/512/1998/1998592.png",
+    "name": "Alice Freeman",
+    "isReadMsg": true,
+    "id": 1812,
+    "msgs": "Hello Friend"
+  },
+  {
+    "avatar": "https://cdn-icons-png.flaticon.com/512/616/616438.png",
+    "name": "Josefina",
+    "isReadMsg": false,
+    "id": 1137,
+    "msgs": "Hello Friend"
+  },
+  {
+    "avatar": "https://cdn-icons-png.flaticon.com/512/1623/1623681.png",
+    "name": "Velasques",
+    "isReadMsg": true,
+    "id": 1213,
+    "msgs": "Hello Friend"
+  },
+  {
+    "avatar": "https://cdn-icons-png.flaticon.com/512/2977/2977285.png",
+    "name": "Barrera",
+    "isReadMsg": true,
+    "id": 1714,
+    "msgs": "Hello Friend"
+  },
+  {
+    "avatar": "https://cdn-icons-png.flaticon.com/512/1998/1998749.png",
+    "name": "Front Man",
+    "isReadMsg": false,
+    "id": 1284,
+    "msgs": "Hello Friend"
+  }
+]
