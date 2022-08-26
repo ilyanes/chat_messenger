@@ -1,11 +1,17 @@
 import ContactListItem from "../ContactListItem/ContactListItem";
 
-function ContactList({ friends }) {
+function ContactList({ friends, onClick }) {
   return (
     <ul>
       <h3>Chats</h3>
       {friends.map(({ avatar, name, id, msgs }) => (
-        <ContactListItem avatar={avatar} name={name} key={id} msgs={msgs} />
+        <ContactListItem
+          onClick={onClick}
+          avatar={avatar}
+          name={name}
+          key={id}
+          msgs={msgs}
+        />
       ))}
     </ul>
   );

@@ -9,30 +9,16 @@ import ChatForm from "./components/ChatForm/ChatForm";
 import fetchAnswers from "./services/fetchAnswers";
 import Chat from "./components/Chat/Chat";
 import { nanoid } from "nanoid";
-import { mapper } from "./services/mapper";
 
 const App = () => {
   const [filter, setFilter] = useState("");
   const [chatContacts, setChatContacts] = useState(friends);
-  const [messages, setMessages] = useState([]);
-
-  // setTimeout(() => {
-  //   newClient.send("Welcome to wsServer!");
-  // }, 3000);
-
-  useEffect(() => {
-    localStorage.setItem("contacts", JSON.stringify(chatContacts));
-  }, [chatContacts]);
+  const [isShow, setIsShow] = useState({ isShow: false });
+  // const [messages, setMessages] = useState([]);
 
   // useEffect(() => {
-  //   fetchAnswers()
-  //     .then((MSG) => {
-  //       const mapMessages = mapper(MSG);
-  //       console.log(mapMessages);
-  //       setMessages((prevState) => [...prevState, ...mapMessages]);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
+  //   localStorage.setItem("contacts", JSON.stringify(chatContacts));
+  // }, [chatContacts]);
 
   const changeFilter = (e) => {
     setFilter(e.target.value);
@@ -42,27 +28,65 @@ const App = () => {
     const normalizedFilter = filter.trim().toLowerCase();
 
     return chatContacts.filter((contact) =>
-      // contact.msgs.toLowerCase().includes(normalizedFilter) ||
       contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
 
-  const addMessage = () => {
+  // const onToggleChat = () => {
+  //   setIsShow((prevState) => ({
+  //     isShow: !prevState.isShow,
+  //   }));
+  // };
+
+  const addMessage = async (contact) => {
+    const chak = await fetchAnswers();
     const newMessage = {
       id: nanoid(),
-      message: fetchAnswers(),
+      messages: chak,
     };
-    setMessages([...messages, newMessage]);
+    setChatContacts([
+      ...chatContacts.msgs,
+      { id: nanoid(), ...contact },
+      newMessage,
+    ]);
     console.log(newMessage);
+  };
+
+  // const addMessage = async (contact) => {
+  //   const chak = await fetchAnswers();
+  //   const newMessage = {
+  //     id: nanoid(),
+  //     messages: chak,
+  //   };
+  //   setMessages([...messages, { id: nanoid(), ...contact }, newMessage]);
+  //   console.log(newMessage);
+  // };
+
+  const findContact = (id) => {
+    const contacts = chatContacts.findIndex((contact) => contact.id === id);
+    console.log("click", contacts);
+    setIsShow((prevState) => ({
+      isShow: !prevState.isShow,
+    }));
+    return contacts;
   };
 
   return (
     <div className="App">
       <Profile userAvatar={user.avatar}></Profile>
       <Filter value={filter} onChange={changeFilter}></Filter>
-      <ContactList friends={getFilterContacts()}></ContactList>
-      <Chat items={messages}></Chat>
-      <ChatForm onSubmit={addMessage}></ChatForm>
+      <ContactList
+        onClick={() => findContact()}
+        friends={getFilterContacts()}
+      ></ContactList>
+      {isShow.isShow && (
+        <>
+          <ChatForm friends={chatContacts} onSubmit={addMessage}></ChatForm>
+          <Chat items={chatContacts.msgs}></Chat>
+        </>
+      )}
+      {/* {isShow.isShow && <Chat items={chatContacts.msgs}></Chat>} */}
+      {/* <ChatForm onSubmit={addMessage}></ChatForm> */}
     </div>
   );
 };

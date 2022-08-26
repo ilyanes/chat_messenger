@@ -1,6 +1,6 @@
-export default function ContactListItem({ avatar, name, msgs }) {
+export default function ContactListItem({ avatar, name, msgs, onClick }) {
   return (
-    <li>
+    <li onClick={onClick}>
       {/* <div
       style={{
         backgroundColor: isReadMsg ? "green" : "red",
@@ -11,7 +11,7 @@ export default function ContactListItem({ avatar, name, msgs }) {
       ></div> */}
       <img src={avatar} alt="" width="48" />
       <h4>{name}</h4>
-      <p>{msgs}</p>
+      <p>{msgs[msgs.length - 1].messages}</p>
     </li>
   );
 }

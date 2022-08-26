@@ -2,36 +2,65 @@
   {
     "avatar": "https://cdn-icons-png.flaticon.com/512/1998/1998592.png",
     "name": "Alice Freeman",
-    "isReadMsg": true,
     "id": 1812,
-    "msgs": "Hello Friend"
+    "msgs": [
+      { "id": "zeU07d5ki5nc31nqhubo9y", "messages": "Hi all" },
+      {
+        "id": "wTzsww5bLVSMHAEuuhq152",
+        "messages": "It takes 14 puppeteers to make Chuck Norris smile, but only 2 to make him destroy an orphanage."
+      },
+      {
+        "id": "wT2zsww5bLVSMHAEuuhq152",
+        "messages": "Chuck Norris smile, but only 2 to make him destroy an orphanage."
+      }
+    ]
   },
   {
     "avatar": "https://cdn-icons-png.flaticon.com/512/616/616438.png",
     "name": "Josefina",
-    "isReadMsg": false,
     "id": 1137,
-    "msgs": "Hello Friend"
+    "msgs": [
+      { "id": "zeU407dki5nc31nqhubo9y", "messages": "Hi all" },
+      {
+        "id": "wTz4swwbLVSMHAEuuhq152",
+        "messages": "It takes 14 puppeteers to make Chuck Norris smile, but only 2 to make him destroy an orphanage."
+      }
+    ]
   },
   {
     "avatar": "https://cdn-icons-png.flaticon.com/512/1623/1623681.png",
     "name": "Velasques",
-    "isReadMsg": true,
     "id": 1213,
-    "msgs": "Hello Friend"
+    "msgs": [
+      { "id": "zeU027dki5nc31nqhubo9y", "messages": "Hi all" },
+      {
+        "id": "wTzs2wwbLVSMHAEuuhq152",
+        "messages": "It takes 14 puppeteers to make Chuck Norris smile, but only 2 to make him destroy an orphanage."
+      }
+    ]
   },
   {
     "avatar": "https://cdn-icons-png.flaticon.com/512/2977/2977285.png",
     "name": "Barrera",
-    "isReadMsg": true,
     "id": 1714,
-    "msgs": "Hello Friend"
+    "msgs": [
+      { "id": "ze3U07dki5nc31nqhubo9y", "messages": "Hi all" },
+      {
+        "id": "wTz3swwbLVSMHAEuuhq152",
+        "messages": "It takes 14 puppeteers to make Chuck Norris smile, but only 2 to make him destroy an orphanage."
+      }
+    ]
   },
   {
     "avatar": "https://cdn-icons-png.flaticon.com/512/1998/1998749.png",
     "name": "Front Man",
-    "isReadMsg": false,
     "id": 1284,
-    "msgs": "Hello Friend"
+    "msgs": [
+      { "id": "z1eU07dki5nc31nqhubo9y", "messages": "Hi all" },
+      {
+        "id": "wT1zswwbLVSMHAEuuhq152",
+        "messages": "It takes 14 puppeteers to make Chuck Norris smile, but only 2 to make him destroy an orphanage."
+      }
+    ]
   }
 ]
