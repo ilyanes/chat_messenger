@@ -3,7 +3,9 @@ const Chat = ({ items }) => {
     <div>
       <h2>Chat Msg</h2>
       {items.map(({ id, messages }) => (
-        <p key={id}>{messages}</p>
+        <p key={id} id={id}>
+          {messages}
+        </p>
       ))}
     </div>
   );

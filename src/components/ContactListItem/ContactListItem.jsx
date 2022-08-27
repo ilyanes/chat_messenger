@@ -1,6 +1,12 @@
-export default function ContactListItem({ avatar, name, msgs, onClick }) {
+export default function ContactListItem({
+  avatar,
+  name,
+  msgs,
+  findContact,
+  id,
+}) {
   return (
-    <li onClick={onClick}>
+    <li id={id} onClick={() => findContact(id)}>
       {/* <div
       style={{
         backgroundColor: isReadMsg ? "green" : "red",

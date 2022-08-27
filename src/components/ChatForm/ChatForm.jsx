@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ChatForm = ({ onSubmit, friends }) => {
+const ChatForm = ({ onSubmit }) => {
   const [state, setState] = useState({
     messages: "",
   });
