@@ -2,7 +2,7 @@
   {
     "avatar": "https://cdn-icons-png.flaticon.com/512/1998/1998592.png",
     "name": "Alice Freeman",
-    "id": 1812,
+    "id": "1812",
     "msgs": [
       { "id": "zeU07d5ki5nc31nqhubo9y", "messages": "Hi friend" },
       {
@@ -14,7 +14,7 @@
   {
     "avatar": "https://cdn-icons-png.flaticon.com/512/616/616438.png",
     "name": "Josefina",
-    "id": 1137,
+    "id": "1137",
     "msgs": [
       { "id": "zeU407dki5nc31nqhubo9y", "messages": "Hi Degster" },
       {
@@ -26,7 +26,7 @@
   {
     "avatar": "https://cdn-icons-png.flaticon.com/512/1623/1623681.png",
     "name": "Velasques",
-    "id": 1213,
+    "id": "1213",
     "msgs": [
       { "id": "zeU027dki5nc31nqhubo9y", "messages": "Hi Man" },
       {
@@ -38,7 +38,7 @@
   {
     "avatar": "https://cdn-icons-png.flaticon.com/512/2977/2977285.png",
     "name": "Barrera",
-    "id": 1714,
+    "id": "1714",
     "msgs": [
       { "id": "ze3U07dki5nc31nqhubo9y", "messages": "Hi Bro" },
       {
@@ -50,7 +50,7 @@
   {
     "avatar": "https://cdn-icons-png.flaticon.com/512/1998/1998749.png",
     "name": "Front Man",
-    "id": 1284,
+    "id": "1284",
     "msgs": [
       { "id": "z1eU07dki5nc31nqhubo9y", "messages": "Hi everybody" },
       {

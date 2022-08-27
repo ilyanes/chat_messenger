@@ -10,6 +10,13 @@ import fetchAnswers from "./services/fetchAnswers";
 import Chat from "./components/Chat/Chat";
 import { nanoid } from "nanoid";
 
+// import fs from "fs/promises";
+// import path from "path";
+// const fs = require("jsonfile");
+// const fs = require("fs/promises");
+const fs = require("fs-extra");
+const path = require("path");
+
 const App = () => {
   const [filter, setFilter] = useState("");
   const [chatContacts, setChatContacts] = useState(friends);
@@ -20,6 +27,17 @@ const App = () => {
   // useEffect(() => {
   //   localStorage.setItem("contacts", JSON.stringify(chatContacts));
   // }, [chatContacts]);
+
+  // to do json
+  const contactsPath = path.join(__dirname, "data", "friends.json");
+  const updateContacts = async (contacts) => {
+    await fs.writeJson(contactsPath, JSON.stringify(contacts, null, 2));
+  };
+  async function listContacts() {
+    const dbContacts = await fs.readJson(contactsPath);
+    return JSON.parse(dbContacts);
+  }
+  //
 
   const changeFilter = (e) => {
     setFilter(e.target.value);
@@ -35,54 +53,48 @@ const App = () => {
     );
   };
 
-  // const onToggleChat = () => {
-  //   setIsShow((prevState) => ({
-  //     isShow: !prevState.isShow,
-  //   }));
-  // };
+  const findContact = async (id, contact) => {
+    // find to friends.json
+    const conts = await listContacts();
 
-  // const addMessage = async (contact) => {
-  //   const chak = await fetchAnswers();
-  //   const newMessage = {
-  //     id: nanoid(),
-  //     messages: chak,
-  //   };
-  //   setChatContacts([
-  //     ...chatContacts.msgs,
-  //     { id: nanoid(), ...contact },
-  //     newMessage,
-  //   ]);
-  //   console.log(newMessage);
-  // };
+    const contacts = chatContacts.findIndex((contact) => contact.id === id);
+    console.log("click", contacts);
+    if (contacts !== -1) {
+      set_found_contact(chatContacts[contacts]);
+
+      // find to friends.json
+      conts[contacts] = { id, contact };
+      await updateContacts(contacts);
+    } else {
+      set_found_contact(null);
+    }
+  };
 
   const addMessage = async (contact) => {
+    // add to friends.json
+    const contacts = await listContacts();
+
     const chak = await fetchAnswers();
     const newMessage = {
       id: nanoid(),
       messages: chak,
     };
     const formMessage = { id: nanoid(), ...contact };
-    setTimeout(
-      set_found_contact([
-        ...found_contact.msgs,
-        found_contact.msgs.push(formMessage),
-        found_contact.msgs.push(newMessage),
-      ]),
-      10000
-    );
+    set_found_contact([
+      ...found_contact.msgs,
+      found_contact.msgs.push(formMessage),
+      found_contact.msgs.push(newMessage),
+    ]);
+
     console.log(formMessage);
-    friends.msgs.push(formMessage, newMessage);
+    console.log(newMessage);
+
+    // add to friends.json
+    contacts.msgs.push(formMessage, newMessage);
+    await updateContacts(contacts);
   };
 
-  const findContact = (id) => {
-    const contacts = chatContacts.findIndex((contact) => contact.id === id);
-    console.log("click", contacts);
-    if (contacts !== -1) {
-      set_found_contact(chatContacts[contacts]);
-    } else {
-      set_found_contact(null);
-    }
-  };
+  // const addMM = setTimeout(addMessage, 15000);
 
   return (
     <div className="App">
