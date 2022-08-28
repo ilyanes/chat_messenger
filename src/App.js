@@ -15,10 +15,10 @@ import { nanoid } from "nanoid";
 
 const App = () => {
   const [filter, setFilter] = useState("");
-  const [chatContacts, setChatContacts] = useState(friends);
+  const [chatContacts, setChatContacts] = useState({ state: friends });
   // const [isShow, setIsShow] = useState({ isShow: false });
   // const [messages, setMessages] = useState([]);
-  const [found_contact, set_found_contact] = useState({ state: "" });
+  // const [found_contact, set_found_contact] = useState({ state: "" });
 
   // useEffect(() => {
   //   localStorage.setItem("contacts", JSON.stringify(chatContacts));
@@ -31,7 +31,7 @@ const App = () => {
   const getFilterContacts = () => {
     const normalizedFilter = filter.trim().toLowerCase();
 
-    return chatContacts.filter(
+    return chatContacts.state.filter(
       (contact) =>
         contact.name.toLowerCase().includes(normalizedFilter) ||
         contact.msgs[1].messages.includes(normalizedFilter)
@@ -39,15 +39,17 @@ const App = () => {
   };
 
   const findContact = async (id) => {
-    const contacts = chatContacts.findIndex((contact) => contact.id === id);
+    const contacts = chatContacts.state.findIndex(
+      (contact) => contact.id === id
+    );
     console.log("click", contacts);
     if (contacts !== -1) {
-      set_found_contact({ state: chatContacts[contacts] });
+      setChatContacts({ state: chatContacts.state[contacts] });
     } else {
-      set_found_contact({});
+      setChatContacts({});
     }
   };
-  console.log("found_contact", found_contact);
+  console.log("chatContacts", chatContacts);
 
   const addMessage = async () => {
     const chak = await fetchAnswers();
@@ -56,7 +58,7 @@ const App = () => {
       messages: chak,
     };
 
-    set_found_contact((prev) => {
+    setChatContacts((prev) => {
       return {
         state: { ...prev, msgs: [...prev.state.msgs, newMessage] },
       };
@@ -73,9 +75,9 @@ const App = () => {
     }, 10000);
   }
 
-  const formM = (contact) => {
+  const addFormMessage = (contact) => {
     const formMessage = { id: nanoid(), ...contact };
-    set_found_contact((prev) => {
+    setChatContacts((prev) => {
       return {
         state: { ...prev, msgs: [...prev.state.msgs, formMessage] },
       };
@@ -90,10 +92,15 @@ const App = () => {
         findContact={findContact}
         friends={getFilterContacts()}
       ></ContactList>
-      {found_contact.state && (
+      {chatContacts.state.state && (
         <>
-          <Chat items={found_contact.state.msgs}></Chat>
-          <ChatForm onSubmit={addMessageWithTimeout}></ChatForm>
+          <Chat items={chatContacts.state.msgs}></Chat>
+          <ChatForm
+            onSubmit={function () {
+              addFormMessage();
+              addMessageWithTimeout();
+            }}
+          ></ChatForm>
         </>
       )}
     </div>
