@@ -85,7 +85,8 @@ const App = () => {
     });
   };
 
-  console.log("date", moment().format("MMMM Do YYYY, h:mm:ss a"));
+  // console.log("date", moment().format("MM/DD/YY, h:mm A"));
+  // console.log("date", moment().format("MMM DD, YYYY"));
 
   return (
     <div className="App">
@@ -106,6 +107,12 @@ const App = () => {
           ></ChatForm>
         </>
       )}
+      {/* <ChatForm
+        onSubmit={function () {
+          addFormMessage();
+          addMessageWithTimeout();
+        }}
+      ></ChatForm> */}
     </div>
   );
 };

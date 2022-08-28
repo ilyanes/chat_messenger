@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { MdOutlineSend } from "react-icons/md";
+import style from "./ChatForm.module.css";
 
 const ChatForm = ({ onSubmit }) => {
   const [state, setState] = useState({
@@ -24,15 +26,20 @@ const ChatForm = ({ onSubmit }) => {
   const { messages } = state;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        value={messages}
-        name="messages"
-        onChange={handleChange}
-        placeholder="Type your message"
-      />
-      <button>Send</button>
-    </form>
+    <div className={style.formLayout}>
+      <form onSubmit={handleSubmit} className={style.formChat}>
+        <input
+          className={style.formInput}
+          value={messages}
+          name="messages"
+          onChange={handleChange}
+          placeholder="Type your message"
+        />
+        <button className={style.formButton}>
+          <MdOutlineSend size={18} color={"grey"} />
+        </button>
+      </form>
+    </div>
   );
 };
 
