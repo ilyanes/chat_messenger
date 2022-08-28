@@ -9,6 +9,7 @@ import ChatForm from "./components/ChatForm/ChatForm";
 import fetchAnswers from "./services/fetchAnswers";
 import Chat from "./components/Chat/Chat";
 import { nanoid } from "nanoid";
+import moment from "moment";
 
 // const fs = require("fs/promises");
 // const path = require("path");
@@ -60,7 +61,7 @@ const App = () => {
 
     setChatContacts((prev) => {
       return {
-        state: { ...prev, msgs: [...prev.state.msgs, newMessage] },
+        state: { ...prev.state, msgs: [...prev.state.msgs, newMessage] },
       };
     });
     // set_found_contact([
@@ -79,10 +80,12 @@ const App = () => {
     const formMessage = { id: nanoid(), ...contact };
     setChatContacts((prev) => {
       return {
-        state: { ...prev, msgs: [...prev.state.msgs, formMessage] },
+        state: { ...prev.state, msgs: [...prev.state.msgs, formMessage] },
       };
     });
   };
+
+  console.log("date", moment().format("MMMM Do YYYY, h:mm:ss a"));
 
   return (
     <div className="App">
@@ -92,7 +95,7 @@ const App = () => {
         findContact={findContact}
         friends={getFilterContacts()}
       ></ContactList>
-      {chatContacts.state.state && (
+      {chatContacts.state.msgs && (
         <>
           <Chat items={chatContacts.state.msgs}></Chat>
           <ChatForm
