@@ -26,6 +26,7 @@ const App = () => {
 
   // useEffect(() => {
   //   localStorage.setItem("contacts", JSON.stringify(chatContacts));
+  //   localStorage.setItem("chat", JSON.stringify(chatContacts));
   // }, [chatContacts]);
 
   const changeFilter = (e) => {
@@ -65,9 +66,9 @@ const App = () => {
     return sliceContact;
   };
 
-  const addMessage = async (id) => {
+  const addMessage = async (id, e) => {
     // const contacts = chatContacts.state.filter((contact) => contact.id !== id);
-
+    e.preventdefault();
     const chak = await fetchAnswers();
     const newMessage = {
       id: nanoid(),
@@ -113,7 +114,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <div>
+      <div className={style.appBar}>
         <HeaderProfile>
           <Profile userAvatar={user.avatar}></Profile>
           <Filter value={filter} onChange={changeFilter}></Filter>
@@ -126,6 +127,7 @@ const App = () => {
       {indexOfContact && (
         <div className={style.chat}>
           <Chat items={chatContacts.state[indexOfContact].msgs}></Chat>
+
           <ChatForm
             onSubmit={function (contact) {
               addFormMessage(contact);
