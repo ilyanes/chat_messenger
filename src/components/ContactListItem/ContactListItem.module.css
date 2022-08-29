@@ -11,7 +11,7 @@
   margin-left: 0;
   margin-right: 0px;
   border-bottom: 0.5px solid grey;
-  overflow: auto;
+  /* overflow: auto; */
 }
 .listItemImg {
   background-color: rgb(139, 138, 138);
@@ -52,7 +52,7 @@
   margin: 0;
   height: 20px;
   font-size: small;
-  padding-right: 20px;
+  padding-right: 10px;
   /* width: 150px; */
   text-overflow: ellipsis;
   overflow: hidden;

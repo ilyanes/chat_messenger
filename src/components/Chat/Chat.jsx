@@ -1,12 +1,21 @@
-const Chat = ({ items }) => {
+import style from "./Chat.module.css";
+
+const Chat = ({ items, headerContact }) => {
   return (
     <div>
-      <h2>Chat Msg</h2>
-      {items.map(({ id, messages }) => (
-        <p key={id} id={id}>
-          {messages}
-        </p>
-      ))}
+      <div className={style.chatHeader}>
+        <div className={style.chatImg}>
+          <img src={headerContact.avatar} alt="" width="60px" height="35px" />
+        </div>
+        <h2 className={style.chatName}>{headerContact.name}</h2>
+      </div>
+      <div className={style.chat}>
+        {items.map(({ id, messages }) => (
+          <p key={id} id={id} className={style.youMessage}>
+            {messages}
+          </p>
+        ))}
+      </div>
     </div>
   );
 };

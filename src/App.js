@@ -1,4 +1,3 @@
-import "./App.css"; //
 import style from "./App.module.css";
 import ContactList from "./components/ContactList";
 import Profile from "./components/Profile";
@@ -68,7 +67,7 @@ const App = () => {
 
   const addMessage = async (id, e) => {
     // const contacts = chatContacts.state.filter((contact) => contact.id !== id);
-    e.preventdefault();
+    // e.preventdefault();
     const chak = await fetchAnswers();
     const newMessage = {
       id: nanoid(),
@@ -79,7 +78,7 @@ const App = () => {
       return {
         state: {
           ...prev,
-          msgs: [...chatContacts.state.msgs, newMessage],
+          msgs: [...chatContacts.state[indexOfContact].msgs, newMessage],
         },
       };
     });
@@ -103,17 +102,18 @@ const App = () => {
       return {
         state: {
           ...prev,
-          msgs: [...prev.state[indexOfContact].msgs, formMessage],
+          msgs: [...chatContacts.state.msgs, formMessage],
         },
       };
     });
   };
 
+  console.log(chatContacts);
   // console.log("date", moment().format("MM/DD/YY, h:mm A"));
   // console.log("date", moment().format("MMM DD, YYYY"));
 
   return (
-    <div className="App">
+    <div className={style.App}>
       <div className={style.appBar}>
         <HeaderProfile>
           <Profile userAvatar={user.avatar}></Profile>
@@ -126,7 +126,10 @@ const App = () => {
       </div>
       {indexOfContact && (
         <div className={style.chat}>
-          <Chat items={chatContacts.state[indexOfContact].msgs}></Chat>
+          <Chat
+            items={chatContacts.state[indexOfContact].msgs}
+            headerContact={chatContacts.state[indexOfContact]}
+          ></Chat>
 
           <ChatForm
             onSubmit={function (contact) {
