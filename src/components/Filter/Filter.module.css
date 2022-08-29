@@ -1,0 +1,21 @@
+.filterLabel {
+  display: flex;
+  margin-top: 10px;
+  justify-content: space-between;
+  background-color: white;
+  border: 1px solid;
+  border-radius: 6px;
+  padding: 10px 10px;
+  border-color: lightgray;
+}
+
+.filterInput {
+  padding-left: 10px;
+  border: none;
+  width: 100%;
+  outline: none;
+}
+/* .filterInput:hover,
+.filterInput:focus {
+  outline: none;
+} */

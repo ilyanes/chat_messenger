@@ -1,9 +1,10 @@
 import ContactListItem from "../ContactListItem/ContactListItem";
-
+import style from "./ContactList.module.css";
 function ContactList({ friends, findContact }) {
   return (
-    <ul>
-      <h3>Chats</h3>
+    // <div className={style.listUl}>
+    <ul className={style.listUl}>
+      <h2 className={style.contactListTitle}>Chats</h2>
       {friends.map(({ avatar, name, id, msgs }) => (
         <ContactListItem
           findContact={findContact}

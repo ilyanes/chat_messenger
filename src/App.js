@@ -1,4 +1,5 @@
-import "./App.css";
+import "./App.css"; //
+import style from "./App.module.css";
 import ContactList from "./components/ContactList";
 import Profile from "./components/Profile";
 import user from "./data/user.json";
@@ -10,6 +11,7 @@ import fetchAnswers from "./services/fetchAnswers";
 import Chat from "./components/Chat/Chat";
 import { nanoid } from "nanoid";
 import moment from "moment";
+import HeaderProfile from "./components/HeaderProfile/HeaderProfile";
 
 // const fs = require("fs/promises");
 // const path = require("path");
@@ -17,6 +19,7 @@ import moment from "moment";
 const App = () => {
   const [filter, setFilter] = useState("");
   const [chatContacts, setChatContacts] = useState({ state: friends });
+  const [indexOfContact, setindexOfContact] = useState(null);
   // const [isShow, setIsShow] = useState({ isShow: false });
   // const [messages, setMessages] = useState([]);
   // const [found_contact, set_found_contact] = useState({ state: "" });
@@ -39,20 +42,32 @@ const App = () => {
     );
   };
 
-  const findContact = async (id) => {
+  const findContact = (id) => {
     const contacts = chatContacts.state.findIndex(
       (contact) => contact.id === id
     );
     console.log("click", contacts);
     if (contacts !== -1) {
-      setChatContacts({ state: chatContacts.state[contacts] });
+      setindexOfContact(contacts);
+      // set_found_contact({ state: chatContacts.state[contacts] });
     } else {
-      setChatContacts({});
+      setindexOfContact(null);
+      // set_found_contact({});
     }
   };
-  console.log("chatContacts", chatContacts);
+  // console.log(indexOfContact);
+  // console.log(chatContacts);
+  // console.log(found_contact);
 
-  const addMessage = async () => {
+  const deleteContact = (id) => {
+    const idx = chatContacts.state.findIndex((contact) => contact.id === id);
+    const [sliceContact] = chatContacts.state.splice(idx, 1);
+    return sliceContact;
+  };
+
+  const addMessage = async (id) => {
+    // const contacts = chatContacts.state.filter((contact) => contact.id !== id);
+
     const chak = await fetchAnswers();
     const newMessage = {
       id: nanoid(),
@@ -61,26 +76,34 @@ const App = () => {
 
     setChatContacts((prev) => {
       return {
-        state: { ...prev.state, msgs: [...prev.state.msgs, newMessage] },
+        state: {
+          ...prev,
+          msgs: [...chatContacts.state.msgs, newMessage],
+        },
       };
     });
-    // set_found_contact([
-    //   ...found_contact.msgs,
-    //   found_contact.msgs.push(newMessage),
-    // ]);
+    // set_found_contact((prev) => {
+    //   return {
+    //     state: { ...prev, msgs: [...state.msgs, newMessage] },
+    //   };
+    // });
   };
 
   function addMessageWithTimeout() {
     setTimeout(() => {
       addMessage();
-    }, 10000);
+    }, 2000);
   }
+  // console.log(found_contact);
 
   const addFormMessage = (contact) => {
     const formMessage = { id: nanoid(), ...contact };
     setChatContacts((prev) => {
       return {
-        state: { ...prev.state, msgs: [...prev.state.msgs, formMessage] },
+        state: {
+          ...prev,
+          msgs: [...prev.state[indexOfContact].msgs, formMessage],
+        },
       };
     });
   };
@@ -90,22 +113,26 @@ const App = () => {
 
   return (
     <div className="App">
-      <Profile userAvatar={user.avatar}></Profile>
-      <Filter value={filter} onChange={changeFilter}></Filter>
-      <ContactList
-        findContact={findContact}
-        friends={getFilterContacts()}
-      ></ContactList>
-      {chatContacts.state.msgs && (
-        <>
-          <Chat items={chatContacts.state.msgs}></Chat>
+      <div>
+        <HeaderProfile>
+          <Profile userAvatar={user.avatar}></Profile>
+          <Filter value={filter} onChange={changeFilter}></Filter>
+        </HeaderProfile>
+        <ContactList
+          findContact={findContact}
+          friends={getFilterContacts()}
+        ></ContactList>
+      </div>
+      {indexOfContact && (
+        <div className={style.chat}>
+          <Chat items={chatContacts.state[indexOfContact].msgs}></Chat>
           <ChatForm
-            onSubmit={function () {
-              addFormMessage();
+            onSubmit={function (contact) {
+              addFormMessage(contact);
               addMessageWithTimeout();
             }}
           ></ChatForm>
-        </>
+        </div>
       )}
       {/* <ChatForm
         onSubmit={function () {

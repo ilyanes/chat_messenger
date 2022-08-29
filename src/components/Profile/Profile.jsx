@@ -1,12 +1,11 @@
+import style from "./Profile.module.css";
 function Profile({ userAvatar }) {
   return (
-    <>
-      <div>
-        <img src={userAvatar} alt="user avatar" width="50px" />
-        {/* <p>{user.name}</p> */}
-        {/* <img src={user.avatar} alt="" width="48" /> */}
-      </div>
-    </>
+    <div className={style.styleProfile}>
+      <img src={userAvatar} alt="user avatar" width="40px" height="50px" />
+      {/* <p>{user.name}</p> */}
+      {/* <img src={user.avatar} alt="" width="48" /> */}
+    </div>
   );
 }
 

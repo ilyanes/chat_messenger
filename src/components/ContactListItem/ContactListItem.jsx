@@ -1,3 +1,4 @@
+import style from "./ContactListItem.module.css";
 export default function ContactListItem({
   avatar,
   name,
@@ -6,18 +7,14 @@ export default function ContactListItem({
   id,
 }) {
   return (
-    <li id={id} onClick={() => findContact(id)}>
-      {/* <div
-      style={{
-        backgroundColor: isReadMsg ? "green" : "red",
-        width: "20px",
-        height: "20px",
-        borderRadius: "50%",
-      }}
-      ></div> */}
-      <img src={avatar} alt="" width="48" />
-      <h4>{name}</h4>
-      <p>{msgs[msgs.length - 1].messages}</p>
+    <li className={style.listItemLi} id={id} onClick={() => findContact(id)}>
+      <div className={style.listItemImg}>
+        <img src={avatar} alt="" width="60px" height="35px" />
+      </div>
+      <div className={style.listItemName}>
+        <h4 className={style.listItemText}>{name}</h4>
+        <p className={style.listItemBottom}>{msgs[msgs.length - 1].messages}</p>
+      </div>
     </li>
   );
 }

@@ -1,0 +1,10 @@
+.styleProfile {
+  background-color: rgb(139, 138, 138);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
