@@ -1,4 +1,4 @@
-import style from "./Profile.module.css";
+import style from "./Profile.module.scss";
 function Profile({ userAvatar }) {
   return (
     <div className={style.styleProfile}>

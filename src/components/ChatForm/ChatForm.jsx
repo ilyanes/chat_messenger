@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MdOutlineSend } from "react-icons/md";
-import style from "./ChatForm.module.css";
+import style from "./ChatForm.module.scss";
 
 const ChatForm = ({ onSubmit }) => {
   const [state, setState] = useState({

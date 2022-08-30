@@ -1,4 +1,4 @@
-import style from "./HeaderProfile.module.css";
+import style from "./HeaderProfile.module.scss";
 function HeaderProfile({ children }) {
   return (
     <section>

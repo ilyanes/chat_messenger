@@ -1,4 +1,4 @@
-import style from "./ContactListItem.module.css";
+import style from "./ContactListItem.module.scss";
 export default function ContactListItem({
   avatar,
   name,

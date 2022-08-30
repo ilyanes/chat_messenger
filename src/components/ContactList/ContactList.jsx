@@ -1,5 +1,5 @@
 import ContactListItem from "../ContactListItem/ContactListItem";
-import style from "./ContactList.module.css";
+import style from "./ContactList.module.scss";
 function ContactList({ friends, findContact }) {
   return (
     // <div className={style.listUl}>

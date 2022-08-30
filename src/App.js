@@ -1,4 +1,4 @@
-import style from "./App.module.css";
+import style from "./App.module.scss";
 import ContactList from "./components/ContactList";
 import Profile from "./components/Profile";
 import user from "./data/user.json";

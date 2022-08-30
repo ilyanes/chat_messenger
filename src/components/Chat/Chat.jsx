@@ -1,4 +1,4 @@
-import style from "./Chat.module.css";
+import style from "./Chat.module.scss";
 
 const Chat = ({ items, headerContact }) => {
   return (

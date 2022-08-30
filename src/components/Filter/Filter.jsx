@@ -1,4 +1,4 @@
-import style from "./Filter.module.css";
+import style from "./Filter.module.scss";
 import { AiOutlineSearch } from "react-icons/ai";
 
 function Filter({ value, onChange }) {
