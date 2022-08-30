@@ -18,10 +18,10 @@ import HeaderProfile from "./components/HeaderProfile/HeaderProfile";
 const App = () => {
   const [filter, setFilter] = useState("");
   const [chatContacts, setChatContacts] = useState({ state: friends });
-  const [indexOfContact, setindexOfContact] = useState(null);
+  const [indexOfContact, setindexOfContact] = useState(-1);
   // const [isShow, setIsShow] = useState({ isShow: false });
   // const [messages, setMessages] = useState([]);
-  // const [found_contact, set_found_contact] = useState({ state: "" });
+  const [found_contact, set_found_contact] = useState({});
 
   // useEffect(() => {
   //   localStorage.setItem("contacts", JSON.stringify(chatContacts));
@@ -47,46 +47,41 @@ const App = () => {
       (contact) => contact.id === id
     );
     console.log("click", contacts);
-    if (contacts !== -1) {
-      setindexOfContact(contacts);
-      // set_found_contact({ state: chatContacts.state[contacts] });
-    } else {
-      setindexOfContact(null);
-      // set_found_contact({});
-    }
+    setindexOfContact(contacts);
+    set_found_contact(chatContacts.state[contacts]);
+    // set_found_contact({ state: chatContacts.state[contacts] });
+    console.log(found_contact);
   };
   // console.log(indexOfContact);
   // console.log(chatContacts);
   // console.log(found_contact);
 
-  const deleteContact = (id) => {
-    const idx = chatContacts.state.findIndex((contact) => contact.id === id);
-    const [sliceContact] = chatContacts.state.splice(idx, 1);
-    return sliceContact;
-  };
+  // const deleteContact = (id) => {
+  //   const idx = chatContacts.state.findIndex((contact) => contact.id === id);
+  //   const [sliceContact] = chatContacts.state.splice(idx, 1);
+  //   return sliceContact;
+  // };
 
-  const addMessage = async (id, e) => {
-    // const contacts = chatContacts.state.filter((contact) => contact.id !== id);
+  const addMessage = async () => {
+    const [contacts] = chatContacts.state.splice(indexOfContact, 1);
     // e.preventdefault();
     const chak = await fetchAnswers();
     const newMessage = {
       id: nanoid(),
       messages: chak,
     };
+    const withNewMessage = found_contact.msgs.push(newMessage);
 
-    setChatContacts((prev) => {
-      return {
-        state: {
-          ...prev,
-          msgs: [...chatContacts.state[indexOfContact].msgs, newMessage],
-        },
-      };
+    setChatContacts({
+      // Добавить в начале массива
+      state: contacts.unshift(withNewMessage),
     });
     // set_found_contact((prev) => {
     //   return {
     //     state: { ...prev, msgs: [...state.msgs, newMessage] },
     //   };
     // });
+    console.log(chatContacts);
   };
 
   function addMessageWithTimeout() {
@@ -94,21 +89,22 @@ const App = () => {
       addMessage();
     }, 2000);
   }
-  // console.log(found_contact);
 
   const addFormMessage = (contact) => {
-    const formMessage = { id: nanoid(), ...contact };
     setChatContacts((prev) => {
+      const formMessage = { id: nanoid(), ...contact };
+      console.log("formMessage", formMessage);
+      prev.state[indexOfContact].msgs = [
+        ...prev.state[indexOfContact].msgs,
+        formMessage,
+      ];
       return {
-        state: {
-          ...prev,
-          msgs: [...chatContacts.state.msgs, formMessage],
-        },
+        ...prev,
       };
     });
+    console.log(chatContacts);
   };
 
-  console.log(chatContacts);
   // console.log("date", moment().format("MM/DD/YY, h:mm A"));
   // console.log("date", moment().format("MMM DD, YYYY"));
 
@@ -124,7 +120,7 @@ const App = () => {
           friends={getFilterContacts()}
         ></ContactList>
       </div>
-      {indexOfContact && (
+      {indexOfContact !== -1 && (
         <div className={style.chat}>
           <Chat
             items={chatContacts.state[indexOfContact].msgs}
@@ -139,12 +135,6 @@ const App = () => {
           ></ChatForm>
         </div>
       )}
-      {/* <ChatForm
-        onSubmit={function () {
-          addFormMessage();
-          addMessageWithTimeout();
-        }}
-      ></ChatForm> */}
     </div>
   );
 };
