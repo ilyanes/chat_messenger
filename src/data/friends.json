@@ -4,9 +4,18 @@
     "name": "Alice Freeman",
     "id": "1812",
     "msgs": [
-      { "id": "zeU07d5ki5nc31nqhubo9y", "messages": "Hi friend" },
+      {
+        "id": "zeU07d5ki5nc31nqhubo9y",
+        "unixTime": "1661883799",
+        "fullDate": "08/30/22, 9:23 PM",
+        "shortDate": "Aug 30, 2022",
+        "messages": "Hi friend"
+      },
       {
         "id": "wTzsww5bLVSMHAEuuhq152",
+        "unixTime": "1661884033",
+        "fullDate": "08/30/22, 9:27 PM",
+        "shortDate": "Aug 30, 2022",
         "messages": "It takes 14 puppe teers to make Chuck Norris smile, but only 2 to make him destroy an orphanage.It takes 14 puppe teers to make Chuck Norris smile, but only 2 to make him destroy an orphanage."
       }
     ]
@@ -16,9 +25,18 @@
     "name": "Josefina",
     "id": "1137",
     "msgs": [
-      { "id": "zeU407dki5nc31nqhubo9y", "messages": "Hi Degster" },
+      {
+        "id": "zeU407dki5nc31nqhubo9y",
+        "unixTime": "1661884133",
+        "fullDate": "08/30/22, 9:28 PM",
+        "shortDate": "Aug 30, 2022",
+        "messages": "Hi Degster"
+      },
       {
         "id": "wTz4swwbLVSMHAEuuhq152",
+        "unixTime": "1661884191",
+        "fullDate": "08/30/22, 9:29 PM",
+        "shortDate": "Aug 30, 2022",
         "messages": "It takes 14 pupko peteers to make Chuck Norris smile, but only 2 to make him destroy an orphanage."
       }
     ]
@@ -28,9 +46,17 @@
     "name": "Velasques",
     "id": "1213",
     "msgs": [
-      { "id": "zeU027dki5nc31nqhubo9y", "messages": "Hi Man" },
       {
-        "id": "wTzs2wwbLVSMHAEuuhq152",
+        "id": "zeU027dki5nc31nqhubo9y",
+        "unixTime": "1661884214",
+        "fullDate": "08/30/22, 9:30 PM",
+        "shortDate": "Aug 30, 2022",
+        "messages": "Hi Man"
+      },
+      {
+        "unixTime": "1661884266",
+        "fullDate": "08/30/22, 9:31 PM",
+        "shortDate": "Aug 30, 2022",
         "messages": "It takes 14 puppete ers to make Chuck Norris smile, but only 2 to make him destroy an orphanage."
       }
     ]
@@ -40,9 +66,18 @@
     "name": "Barrera",
     "id": "1714",
     "msgs": [
-      { "id": "ze3U07dki5nc31nqhubo9y", "messages": "Hi Bro" },
+      {
+        "id": "ze3U07dki5nc31nqhubo9y",
+        "unixTime": "1661884282",
+        "fullDate": "08/30/22, 9:31 PM",
+        "shortDate": "Aug 30, 2022",
+        "messages": "Hi Bro"
+      },
       {
         "id": "wTz3swwbLVSMHAEuuhq152",
+        "unixTime": "1661884370",
+        "fullDate": "08/30/22, 9:32 PM",
+        "shortDate": "Aug 30, 2022",
         "messages": "It takes 14 puppeteers to make Chuck Norris smile, but only 2 to make him destroy an orphanage."
       }
     ]
@@ -52,9 +87,18 @@
     "name": "Front Man",
     "id": "1284",
     "msgs": [
-      { "id": "z1eU07dki5nc31nqhubo9y", "messages": "Hi everybody" },
+      {
+        "id": "z1eU07dki5nc31nqhubo9y",
+        "unixTime": "1661884415",
+        "fullDate": "08/30/22, 9:33 PM",
+        "shortDate": "Aug 30, 2022",
+        "messages": "Hi everybody"
+      },
       {
         "id": "wT1zswwbLVSMHAEuuhq152",
+        "unixTime": "1661884466",
+        "fullDate": "08/30/22, 9:33 PM",
+        "shortDate": "Aug 30, 2022",
         "messages": "It takes 14 puppeteers to make Chuck Norris smile, but only 2 to make him destroy an orphanage."
       }
     ]

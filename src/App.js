@@ -38,7 +38,7 @@ const App = () => {
     return chatContacts.state.filter(
       (contact) =>
         contact.name.toLowerCase().includes(normalizedFilter) ||
-        contact.msgs[1].messages.includes(normalizedFilter)
+        contact.msgs[contact.msgs - 1].messages.includes(normalizedFilter)
     );
   };
 
@@ -46,12 +46,26 @@ const App = () => {
     const contacts = chatContacts.state.findIndex(
       (contact) => contact.id === id
     );
+    const contactId = chatContacts.state.find((contact) => contact.id === id);
     console.log("click", contacts);
+    console.log("contactId", contactId);
     setindexOfContact(contacts);
-    set_found_contact(chatContacts.state[contacts]);
+    set_found_contact(contactId);
     // set_found_contact({ state: chatContacts.state[contacts] });
     console.log(found_contact);
   };
+  // const findContact = (id) => {
+  //   const contacts = chatContacts.state.findIndex(
+  //     (contact) => contact.id === id
+  //   );
+  //   const contactId = chatContacts.state.find((contact) => contact.id === id);
+  //   console.log("click", contacts);
+  //   console.log("contactId", contactId);
+  //   setindexOfContact(contacts);
+  //   set_found_contact(chatContacts.state[contacts]);
+  //   // set_found_contact({ state: chatContacts.state[contacts] });
+  //   console.log(found_contact);
+  // };
   // console.log(indexOfContact);
   // console.log(chatContacts);
   // console.log(found_contact);
@@ -63,56 +77,107 @@ const App = () => {
   // };
 
   const addMessage = async () => {
-    const [contacts] = chatContacts.state.splice(indexOfContact, 1);
+    // const [contacts] = chatContacts.state.splice(indexOfContact, 1);
     // e.preventdefault();
+
     const chak = await fetchAnswers();
     const newMessage = {
       id: nanoid(),
+      fullDate: moment().format("MM/DD/YY, h:mm A"),
+      shortDate: moment().format("MMM DD, YYYY"),
+      unixTime: moment().format("X"),
       messages: chak,
     };
 
-    set_found_contact((prev) => {
-      prev.msgs = [...prev.msgs, newMessage];
+    setChatContacts((prev) => {
       return {
-        ...prev,
+        state: prev.state.map((el, index) => {
+          if (index === indexOfContact) {
+            return { ...el, msgs: [...el.msgs, newMessage] };
+          } else {
+            return el;
+          }
+        }),
       };
     });
 
-    // const withNewMessage = found_contact.msgs.push(newMessage);
+    // set_found_contact((prev) => {
+    //   prev.msgs = [...prev.msgs, newMessage];
+    //   return {
+    //     ...prev,
+    //   };
+    // });
 
-    setChatContacts({
-      // Добавить в начале массива
-      state: contacts.unshift(found_contact),
-    });
+    // const withNewMessage = found_contact.msgs.push(newMessage);
+    // setChatContacts((prev) => {
+    //   prev = prev.state.unshift(found_contact);
+    //   return {
+    //     ...prev,
+    //   };
+    // });
+    // setChatContacts({
+    //   // Добавить в начале массива
+    //   state: contacts.unshift(found_contact),
+    // });
     // set_found_contact((prev) => {
     //   return {
     //     state: { ...prev, msgs: [...state.msgs, newMessage] },
     //   };
     // });
-    console.log(chatContacts);
-    console.log(found_contact);
   };
 
   function addMessageWithTimeout() {
     setTimeout(() => {
       addMessage();
-    }, 2000);
+    }, 5000);
   }
 
   const addFormMessage = (contact) => {
+    const formMessage = {
+      id: nanoid(),
+      fullDate: moment().format("MM/DD/YY, h:mm A"),
+      shortDate: moment().format("MMM DD, YYYY"),
+      unixTime: moment().format("X"),
+      ...contact,
+    };
     setChatContacts((prev) => {
-      const formMessage = { id: nanoid(), ...contact };
-      console.log("formMessage", formMessage);
-      prev.state[indexOfContact].msgs = [
-        ...prev.state[indexOfContact].msgs,
-        formMessage,
-      ];
       return {
-        ...prev,
+        state: prev.state.map((el, index) => {
+          if (index === indexOfContact) {
+            return { ...el, msgs: [...el.msgs, formMessage] };
+          } else {
+            return el;
+          }
+        }),
       };
     });
-    console.log(chatContacts);
   };
+  console.log(chatContacts);
+
+  // const addFormMessage = (contact) => {
+  //   const formMessage = { id: nanoid(), ...contact };
+
+  //   console.log("formMessage", formMessage);
+  //   setChatContacts((prev) => {
+  //     prev.state[indexOfContact].msgs = [
+  //       ...prev.state[indexOfContact].msgs,
+  //       formMessage,
+  //     ];
+
+  //     // const a = ["a", "b", "c", "e", "d"];
+  //     // [a[3], a[4]] = [a[4], a[3]];
+  //     // a[ 'a', 'b', 'c', 'd', 'e' ]
+
+  //     return {
+  //       ...prev,
+  //     };
+  //   });
+  //   console.log(chatContacts);
+  // };
+  // [prev.state[0], prev.state[indexOfContact]] = [
+  //   prev.state[indexOfContact],
+  //   prev.state[0],
+  // ];
 
   // console.log("date", moment().format("MM/DD/YY, h:mm A"));
   // console.log("date", moment().format("MMM DD, YYYY"));
@@ -126,7 +191,7 @@ const App = () => {
         </HeaderProfile>
         <ContactList
           findContact={findContact}
-          friends={getFilterContacts()}
+          friends={getFilterContacts() ?? chatContacts.reverse()}
         ></ContactList>
       </div>
       {indexOfContact !== -1 && (
@@ -138,7 +203,7 @@ const App = () => {
 
           <ChatForm
             onSubmit={function (contact) {
-              // addFormMessage(contact);
+              addFormMessage(contact);
               addMessageWithTimeout();
             }}
           ></ChatForm>
