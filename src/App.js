@@ -70,11 +70,19 @@ const App = () => {
       id: nanoid(),
       messages: chak,
     };
-    const withNewMessage = found_contact.msgs.push(newMessage);
+
+    set_found_contact((prev) => {
+      prev.msgs = [...prev.msgs, newMessage];
+      return {
+        ...prev,
+      };
+    });
+
+    // const withNewMessage = found_contact.msgs.push(newMessage);
 
     setChatContacts({
       // Добавить в начале массива
-      state: contacts.unshift(withNewMessage),
+      state: contacts.unshift(found_contact),
     });
     // set_found_contact((prev) => {
     //   return {
@@ -82,6 +90,7 @@ const App = () => {
     //   };
     // });
     console.log(chatContacts);
+    console.log(found_contact);
   };
 
   function addMessageWithTimeout() {
@@ -129,7 +138,7 @@ const App = () => {
 
           <ChatForm
             onSubmit={function (contact) {
-              addFormMessage(contact);
+              // addFormMessage(contact);
               addMessageWithTimeout();
             }}
           ></ChatForm>
