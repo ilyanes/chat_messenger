@@ -9,6 +9,7 @@
         "unixTime": "1661883799",
         "fullDate": "08/30/22, 9:23 PM",
         "shortDate": "Aug 30, 2022",
+        "type": "user",
         "messages": "Hi friend"
       },
       {
@@ -16,6 +17,7 @@
         "unixTime": "1661884033",
         "fullDate": "08/30/22, 9:27 PM",
         "shortDate": "Aug 30, 2022",
+        "type": "friend",
         "messages": "It takes 14 puppe teers to make Chuck Norris smile, but only 2 to make him destroy an orphanage.It takes 14 puppe teers to make Chuck Norris smile, but only 2 to make him destroy an orphanage."
       }
     ]
@@ -30,6 +32,7 @@
         "unixTime": "1661884133",
         "fullDate": "08/30/22, 9:28 PM",
         "shortDate": "Aug 30, 2022",
+        "type": "user",
         "messages": "Hi Degster"
       },
       {
@@ -37,6 +40,7 @@
         "unixTime": "1661884191",
         "fullDate": "08/30/22, 9:29 PM",
         "shortDate": "Aug 30, 2022",
+        "type": "friend",
         "messages": "It takes 14 pupko peteers to make Chuck Norris smile, but only 2 to make him destroy an orphanage."
       }
     ]
@@ -44,19 +48,21 @@
   {
     "avatar": "https://cdn-icons-png.flaticon.com/512/1623/1623681.png",
     "name": "Velasques",
-    "id": "1213",
+    "id": "1213hghgggjk",
     "msgs": [
       {
-        "id": "zeU027dki5nc31nqhubo9y",
+        "id": "sda23112wedawed",
         "unixTime": "1661884214",
         "fullDate": "08/30/22, 9:30 PM",
         "shortDate": "Aug 30, 2022",
+        "type": "user",
         "messages": "Hi Man"
       },
       {
         "unixTime": "1661884266",
         "fullDate": "08/30/22, 9:31 PM",
         "shortDate": "Aug 30, 2022",
+        "type": "friend",
         "messages": "It takes 14 puppete ers to make Chuck Norris smile, but only 2 to make him destroy an orphanage."
       }
     ]
@@ -71,6 +77,7 @@
         "unixTime": "1661884282",
         "fullDate": "08/30/22, 9:31 PM",
         "shortDate": "Aug 30, 2022",
+        "type": "user",
         "messages": "Hi Bro"
       },
       {
@@ -78,6 +85,7 @@
         "unixTime": "1661884370",
         "fullDate": "08/30/22, 9:32 PM",
         "shortDate": "Aug 30, 2022",
+        "type": "friend",
         "messages": "It takes 14 puppeteers to make Chuck Norris smile, but only 2 to make him destroy an orphanage."
       }
     ]
@@ -92,6 +100,7 @@
         "unixTime": "1661884415",
         "fullDate": "08/30/22, 9:33 PM",
         "shortDate": "Aug 30, 2022",
+        "type": "user",
         "messages": "Hi everybody"
       },
       {
@@ -99,6 +108,7 @@
         "unixTime": "1661884466",
         "fullDate": "08/30/22, 9:33 PM",
         "shortDate": "Aug 30, 2022",
+        "type": "friend",
         "messages": "It takes 14 puppeteers to make Chuck Norris smile, but only 2 to make him destroy an orphanage."
       }
     ]

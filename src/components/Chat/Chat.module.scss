@@ -23,25 +23,69 @@
   margin-left: 15px;
 }
 
-.chat {
+.chatArea {
   display: flex;
   flex-direction: column;
   overflow: auto;
+  max-height: 500px;
 }
 
 .youMessage {
   padding: 10px 10px;
   text-align: left;
+  // justify-content: center;
+  // align-items: center;
   background-color: rgb(212, 212, 212);
   width: fit-content;
   border-radius: 15px;
+  margin: 0;
 }
 
 .userMessage {
   padding: 10px 10px;
   text-align: left;
-  background-color: rgb(212, 212, 212);
+  background-color: rgb(73, 72, 72);
   width: fit-content;
   border-radius: 15px;
   color: whitesmoke;
+  margin: 0 0 0 10px;
+}
+
+.youDiv {
+  display: flex;
+  justify-content: right;
+  margin-right: 10px;
+  margin-left: 20%;
+  margin-top: 10px;
+}
+
+.userDiv {
+  display: flex;
+  justify-content: left;
+  margin-left: 10px;
+  margin-right: 20%;
+  margin-top: 10px;
+}
+.userDivLayout {
+  display: flex;
+}
+.userP {
+  text-align: left;
+  padding-left: 10px;
+  margin-top: 5px;
+  font-size: small;
+  color: grey;
+}
+.youP {
+  text-align: right;
+  padding-right: 10px;
+  margin-top: 5px;
+  font-size: small;
+  color: grey;
+}
+
+.chatLi {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }

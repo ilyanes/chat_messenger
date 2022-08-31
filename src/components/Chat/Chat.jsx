@@ -1,4 +1,5 @@
 import style from "./Chat.module.scss";
+import ChatItem from "./ChatItem";
 
 const Chat = ({ items, headerContact }) => {
   return (
@@ -9,22 +10,23 @@ const Chat = ({ items, headerContact }) => {
         </div>
         <h2 className={style.chatName}>{headerContact.name}</h2>
       </div>
-      <div className={style.chat}>
-        {items.map(({ id, messages }) => (
-          <p key={id} id={id} className={style.youMessage}>
-            {messages}
-          </p>
-        ))}
+      <div className={style.chatArea}>
+        <ul className={style.chatLi}>
+          {items.map(({ id, messages, type, fullDate }) => {
+            return (
+              <ChatItem
+                key={id}
+                messages={messages}
+                type={type}
+                fullDate={fullDate}
+                headerContact={headerContact}
+              ></ChatItem>
+            );
+          })}
+        </ul>
       </div>
     </div>
   );
 };
 
 export default Chat;
-
-// const Chat = ({ items }) => {
-//   const elements = items.map(({ message, id }) => {
-//     return <p key={id}>{message}</p>;
-//   });
-//   return <div>{elements}</div>;
-// };

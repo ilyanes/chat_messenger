@@ -24,18 +24,15 @@
 
 .listItemName {
   display: flex;
-  flex-direction: column;
   height: 80px;
-  /* align-items: left; */
-  justify-content: center;
-  justify-items: left;
+  align-items: up;
+  justify-content: space-between;
   margin-top: 0;
   margin-bottom: 0;
   margin-left: 0;
   padding-left: 10px;
   overflow: hidden;
-
-  /* justify-items: space-between; */
+  width: 500px;
 }
 .listItemText {
   display: flex;
@@ -43,14 +40,29 @@
   margin: 0;
   text-align: left;
   text-overflow: ellipsis;
-
   overflow: auto;
+  width: 100px;
+}
+.listItemTextBottom {
+  font-size: small;
+  width: 100px;
+  height: 20px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.listItemLeft {
+  padding-top: 13px;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
 }
 .listItemBottom {
   display: flex;
   margin: 0;
-  height: 20px;
+  height: 24px;
   font-size: small;
+  padding-top: 13px;
   padding-right: 10px;
   /* width: 150px; */
   text-overflow: ellipsis;

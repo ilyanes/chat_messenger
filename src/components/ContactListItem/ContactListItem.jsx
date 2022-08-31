@@ -7,13 +7,25 @@ export default function ContactListItem({
   id,
 }) {
   return (
-    <li className={style.listItemLi} id={id} onClick={() => findContact(id)}>
+    <li
+      key={id}
+      className={style.listItemLi}
+      id={id}
+      onClick={() => findContact(id)}
+    >
       <div className={style.listItemImg}>
         <img src={avatar} alt="" width="60px" height="35px" />
       </div>
       <div className={style.listItemName}>
-        <h4 className={style.listItemText}>{name}</h4>
-        <p className={style.listItemBottom}>{msgs[msgs.length - 1].messages}</p>
+        <div className={style.listItemLeft}>
+          <h4 className={style.listItemText}>{name}</h4>
+          <p className={style.listItemTextBottom}>
+            {msgs[msgs.length - 1].messages}
+          </p>
+        </div>
+        <p className={style.listItemBottom}>
+          {msgs[msgs.length - 1].shortDate}
+        </p>
       </div>
     </li>
   );
