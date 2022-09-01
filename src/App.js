@@ -43,7 +43,6 @@ function App() {
     const contacts = chatContacts.state.findIndex(
       (contact) => contact.id === id
     );
-    console.log("click", contacts);
     setindexOfContact(contacts);
   };
 
