@@ -3,8 +3,6 @@ function Profile({ userAvatar }) {
   return (
     <div className={style.styleProfile}>
       <img src={userAvatar} alt="user avatar" width="40px" height="50px" />
-      {/* <p>{user.name}</p> */}
-      {/* <img src={user.avatar} alt="" width="48" /> */}
     </div>
   );
 }

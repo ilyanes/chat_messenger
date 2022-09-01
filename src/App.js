@@ -16,7 +16,6 @@ import { useLocalStorage } from "./components/hooks/useLocalStorage";
 const initContacts = { state: friends };
 const initIndex = -1;
 
-console.log("init", initContacts);
 function App() {
   const [filter, setFilter] = useState("");
   const [chatContacts, setChatContacts] = useLocalStorage(
@@ -60,10 +59,6 @@ function App() {
     };
 
     setChatContacts((prev) => {
-      // [prev.state[0], prev.state[indexOfContact]] = [
-      //   prev.state[indexOfContact],
-      //   prev.state[0],
-      // ];
       return {
         state: prev.state.map((el, index) => {
           if (index === 0) {
@@ -109,7 +104,6 @@ function App() {
     });
     setindexOfContact(0);
   };
-  console.log("chatContacts", chatContacts);
 
   return (
     <div className={style.App}>
